@@ -687,7 +687,25 @@ export const dashboardSeries = [
   { month: "Jun", leads: 2940, roas: 3.9, spend: 62 },
 ];
 
-export const blogPosts = [
+export type BlogSection = {
+  heading: string;
+  body: string;
+};
+
+export type BlogPost = {
+  title: string;
+  slug: string;
+  category: string;
+  readTime: string;
+  excerpt: string;
+  publishedAt: string;
+  keywords: string[];
+  intro: string;
+  sections: BlogSection[];
+  takeaways: string[];
+};
+
+export const blogPosts: BlogPost[] = [
   {
     title: "How to diagnose a paid ads funnel before increasing budget",
     slug: "diagnose-paid-ads-funnel-before-scaling",
@@ -695,6 +713,39 @@ export const blogPosts = [
     readTime: "6 min read",
     excerpt:
       "A practical framework for checking tracking, offer strength, landing-page friction, and creative fatigue before scaling spend.",
+    publishedAt: "2026-02-12",
+    keywords: [
+      "Performance Marketing",
+      "Meta Ads",
+      "Google Ads",
+      "Conversion Tracking",
+      "ROAS Optimization",
+    ],
+    intro:
+      "Scaling paid ad spend without diagnosing the funnel is the fastest way to lose money in performance marketing. Before you double a budget, run this four-layer check — tracking, offer, landing, creative — and you will know exactly where the leak is.",
+    sections: [
+      {
+        heading: "Layer 1 — Tracking & attribution",
+        body: "Confirm GA4 events, the Meta Conversions API, and Google Ads conversion actions are firing in real time. Misattributed conversions silently distort ROAS and lead you to scale the wrong campaigns. Run a 24-hour parity check against your CRM or order management system before any budget change.",
+      },
+      {
+        heading: "Layer 2 — Offer strength",
+        body: "A weak offer turns even great creative into a slow leak. Pressure-test the headline promise, the bonus stack, the price anchoring, and the urgency mechanism. If sales teams complain about lead quality, the offer is usually the issue — not the audience.",
+      },
+      {
+        heading: "Layer 3 — Landing-page friction",
+        body: "Open the landing page on a real mid-range Android phone over 4G. If it takes more than 3 seconds to be interactive, or the form has more than 5 fields, you are paying for clicks that bounce. Trim form length, compress images, lazy-load below-fold, and add visible trust signals above the fold.",
+      },
+      {
+        heading: "Layer 4 — Creative fatigue",
+        body: "Pull the last 14 days of creative performance and rank by 3-second view rate, hook rate, and cost per result. If your top creative has lost 25% of its hook rate week-over-week, it is fatigued — refresh hooks before scaling. Increasing budget on a fatigued ad accelerates ad-set CPM inflation.",
+      },
+    ],
+    takeaways: [
+      "Don't scale budget without 24-hour tracking parity against your CRM.",
+      "Diagnose tracking, offer, landing, and creative — in that order.",
+      "Refresh fatigued creative before budget increases, not after.",
+    ],
   },
   {
     title: "What makes a Meta Ads creative testing system profitable",
@@ -703,14 +754,87 @@ export const blogPosts = [
     readTime: "7 min read",
     excerpt:
       "The hooks, proof points, formats, testing cadence, and decision rules that separate random ads from a growth engine.",
+    publishedAt: "2026-03-04",
+    keywords: [
+      "Meta Ads",
+      "Facebook Ads",
+      "Instagram Ads",
+      "Creative Testing",
+      "UGC",
+    ],
+    intro:
+      "A profitable Meta Ads account is rarely about one viral ad — it is about a creative testing system that compounds learning every week. Here is the structure I use to find statistically meaningful winners without burning the budget.",
+    sections: [
+      {
+        heading: "Map buyer objections to creative angles",
+        body: "Before designing a single creative, list the top 5 objections your sales team hears. Each objection becomes a creative angle — proof, comparison, before-after, demo, or testimonial. Random aesthetic tests waste budget; objection-mapped tests teach you what actually moves buyers.",
+      },
+      {
+        heading: "Hook rate is the leading indicator",
+        body: "Optimize for 3-second view rate (hook rate) above 30% before you worry about CTR or ROAS. If the hook does not stop the scroll, the rest of the creative does not matter. Test 3-5 hook variations against the same body to isolate the hook itself.",
+      },
+      {
+        heading: "Run UGC and produced creative side-by-side",
+        body: "UGC-style videos from real creators outperform polished studio ads in most consumer categories — but the gap is smaller in premium B2B. Run both formats in the same test and let the cost-per-result decide, not your aesthetic preference.",
+      },
+      {
+        heading: "Decision rules over gut calls",
+        body: "Set written kill and scale rules — for example, kill any ad below 1.0x ROAS after ₹10K spend, scale any ad above 2.5x ROAS after ₹15K spend. Documented rules prevent emotional decisions and let the testing system run on autopilot week after week.",
+      },
+    ],
+    takeaways: [
+      "Map creative angles to real buyer objections, not aesthetic ideas.",
+      "Hook rate > 30% is the gate before you optimize anything downstream.",
+      "Run UGC and produced creative side-by-side — let cost-per-result decide.",
+      "Write kill/scale rules before launching, not after a bad week.",
+    ],
   },
   {
-    title: "Why your business website is silently losing leads (and how to fix it)",
+    title:
+      "Why your business website is silently losing leads (and how to fix it)",
     slug: "business-website-losing-leads",
     category: "Website Development",
     readTime: "5 min read",
     excerpt:
       "Speed, structure, trust signals, mobile UX, and conversion blocks — the website fundamentals that decide whether traffic becomes leads.",
+    publishedAt: "2026-04-09",
+    keywords: [
+      "Website Development",
+      "Conversion Rate Optimization",
+      "Landing Page Design",
+      "Core Web Vitals",
+      "Mobile UX",
+    ],
+    intro:
+      "Most business websites lose 60-80% of their potential leads not because of traffic — but because of how the site is built. Here are the five fixes I make on almost every website project, and what each one does to conversion.",
+    sections: [
+      {
+        heading: "Fix 1 — Speed below 2 seconds on mobile",
+        body: "Every additional second of load time drops mobile conversion by ~12%. Compress images to AVIF/WebP, lazy-load below-fold media, defer non-critical JavaScript, and serve from a CDN. On modern Next.js sites, this is built in — but only if you actually use the Image component and dynamic imports.",
+      },
+      {
+        heading: "Fix 2 — One clear action above the fold",
+        body: "Visitors decide whether to engage in 5 seconds. Above the fold, surface one headline, one supporting line, one trust signal, and one CTA — not a menu of options. The CTA should restate the outcome, not the action ('Get a free strategy call', not 'Submit').",
+      },
+      {
+        heading: "Fix 3 — Trust blocks where the decision happens",
+        body: "Place testimonials, logos, ratings, and result tags next to the CTA — not on a separate page. Trust signals at the exact moment of decision lift form completion rates by 20-40% in our tests.",
+      },
+      {
+        heading: "Fix 4 — Mobile-first form design",
+        body: "Reduce form fields to the minimum your sales team actually needs. Use input modes (`inputMode=\"tel\"`, `email`), large touch targets (44px+), and avoid required fields that block submission. If WhatsApp is a primary channel for your audience, offer a WhatsApp button alongside the form.",
+      },
+      {
+        heading: "Fix 5 — SEO + schema on every page",
+        body: "Add semantic HTML, descriptive titles and descriptions, Open Graph tags, and JSON-LD schema (Organization, Service, FAQ, Breadcrumb) so Google and AI search engines understand the site. This is now table stakes for ranking and for being cited inside ChatGPT, Perplexity, and Google AI Overviews.",
+      },
+    ],
+    takeaways: [
+      "Sub-2-second mobile load is the entry ticket — not a nice-to-have.",
+      "One action above the fold beats a menu of options.",
+      "Place trust signals where the decision happens, not on a separate page.",
+      "Schema markup is now table stakes for SEO and AI search visibility.",
+    ],
   },
 ];
 

@@ -1,5 +1,6 @@
 import { HomePage } from "@/components/sections/home-page";
 import {
+  aggregateRatingSchema,
   faqSchema,
   organizationSchema,
   personSchema,
@@ -21,6 +22,7 @@ export default function Page() {
             organizationSchema(),
             websiteSchema(),
             faqSchema(),
+            aggregateRatingSchema(),
             websitePortfolioSchema(),
             ...servicesSchema(),
           ]),

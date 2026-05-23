@@ -3,6 +3,7 @@ import {
   certifications,
   faqs,
   services,
+  testimonials,
   websiteProjects,
   type WebsiteProject,
 } from "@/lib/data/site";
@@ -197,6 +198,44 @@ export function servicesSchema() {
   }));
 }
 
+export function aggregateRatingSchema() {
+  const total = testimonials.length;
+  const average =
+    testimonials.reduce((sum, t) => sum + t.rating, 0) / Math.max(total, 1);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#brandzoo-media`,
+    name: brand.company,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: average.toFixed(1),
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: total,
+      reviewCount: total,
+    },
+    review: testimonials.map((t) => ({
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: t.rating,
+        bestRating: 5,
+      },
+      author: {
+        "@type": "Person",
+        name: t.name,
+      },
+      reviewBody: t.quote,
+      itemReviewed: {
+        "@type": "Service",
+        name: `Digital Marketing & Website Development by ${brand.name}`,
+      },
+    })),
+  };
+}
+
 export function websitePortfolioSchema() {
   return {
     "@context": "https://schema.org",
@@ -244,6 +283,8 @@ export function articleSchema(post: {
   slug: string;
   excerpt: string;
   category: string;
+  publishedAt?: string;
+  keywords?: string[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -251,8 +292,15 @@ export function articleSchema(post: {
     headline: post.title,
     description: post.excerpt,
     articleSection: post.category,
+    keywords: post.keywords?.join(", "),
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
     url: `${SITE_URL}/blog/${post.slug}`,
     image: `${SITE_URL}/opengraph-image`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
+    },
     inLanguage: "en-IN",
     author: {
       "@type": "Person",
