@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { ReactNode, SVGProps } from "react";
 import {
   ArrowRight,
   CalendarDays,
@@ -181,9 +181,9 @@ function HeroSection() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="size-4 text-lime-200" />
+                  <LinkedinIcon className="size-4 text-[#0A66C2]" />
                   <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-100">
-                    Founder · CEO · Available for new projects
+                    Verified LinkedIn · Available for new projects
                   </p>
                 </div>
                 <p className="mt-1 text-sm font-semibold text-white">
@@ -195,11 +195,22 @@ function HeroSection() {
               </div>
               <div className="flex w-full shrink-0 flex-col gap-2 sm:w-fit">
                 <Link
+                  href={brand.linkedinUrl}
+                  target="_blank"
+                  rel="me noopener noreferrer"
+                  aria-label="Open Amit Rai LinkedIn profile in a new tab"
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-[#0A66C2] px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0959AB]"
+                >
+                  <LinkedinIcon className="size-4" />
+                  LinkedIn Profile
+                  <ExternalLink className="size-3.5" />
+                </Link>
+                <Link
                   href={`tel:${brand.phoneIntl}`}
                   aria-label={`Call Amit Rai at ${brand.phone}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-3 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100"
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-3 py-2 text-xs font-semibold text-slate-950 transition hover:bg-cyan-100"
                 >
-                  <Phone className="size-4" />
+                  <Phone className="size-3.5" />
                   {brand.phone}
                 </Link>
                 <Link
@@ -235,7 +246,11 @@ function HeroSection() {
 
 function BrandSnapshotSection() {
   return (
-    <section className="border-y border-white/10 bg-[#071018] py-10">
+    <section
+      id="profile"
+      aria-label="LinkedIn & company snapshot"
+      className="border-y border-white/10 bg-[#071018] py-10"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
@@ -243,7 +258,7 @@ function BrandSnapshotSection() {
               <div className="relative size-20 shrink-0 overflow-hidden rounded-md border border-white/15 bg-white/10 shadow-[0_0_30px_rgba(67,217,255,0.14)] sm:size-24">
                 <Image
                   src="/amit-rai.jpg"
-                  alt="Amit Rai - CEO of Brandzoo Media"
+                  alt="Amit Rai - Founder & CEO of Brandzoo Media on LinkedIn"
                   fill
                   sizes="96px"
                   className="object-cover"
@@ -251,13 +266,13 @@ function BrandSnapshotSection() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <Sparkles className="size-4 text-cyan-200" />
+                  <LinkedinIcon className="size-4 text-[#0A66C2]" />
                   <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-200">
-                    Brand Snapshot
+                    LinkedIn & Company Snapshot
                   </p>
                 </div>
                 <h2 className="mt-3 text-2xl font-semibold tracking-[-0.02em] text-white sm:text-3xl">
-                  About Amit Rai & Brandzoo Media.
+                  Verified professional profile of Amit Rai & Brandzoo Media.
                 </h2>
                 <p className="mt-3 max-w-3xl text-sm leading-7 text-white/58">
                   {brand.companySummary}
@@ -266,6 +281,17 @@ function BrandSnapshotSection() {
             </div>
             <div className="flex w-full shrink-0 flex-col gap-2 sm:flex-row lg:w-fit">
               <Link
+                href={brand.linkedinUrl}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label="Visit Amit Rai's verified LinkedIn profile"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#0A66C2] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#0959AB]"
+              >
+                <LinkedinIcon className="size-4" />
+                LinkedIn Profile
+                <ExternalLink className="size-4" />
+              </Link>
+              <Link
                 href={brand.website}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -273,8 +299,7 @@ function BrandSnapshotSection() {
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-300 to-cyan-200 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:from-cyan-200 hover:to-cyan-100"
               >
                 <Globe2 className="size-4" />
-                Visit Brandzoo Media
-                <ExternalLink className="size-4" />
+                Visit Website
               </Link>
               <Link
                 href={`tel:${brand.phoneIntl}`}
@@ -341,6 +366,17 @@ function AboutSection() {
               >
                 <Mail className="size-4" />
                 {brand.email}
+              </Link>
+              <Link
+                href={brand.linkedinUrl}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label="View Amit Rai LinkedIn profile"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#0A66C2] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0959AB]"
+              >
+                <LinkedinIcon className="size-4" />
+                View LinkedIn
+                <ExternalLink className="size-4" />
               </Link>
             </div>
           </div>
@@ -760,6 +796,12 @@ function ContactSection() {
                 value={brand.websiteDisplay}
                 href={brand.website}
               />
+              <ContactLink
+                icon={<LinkedinIcon className="size-5" />}
+                label="LinkedIn"
+                value="Verified professional profile"
+                href={brand.linkedinUrl}
+              />
             </div>
           </div>
         </Reveal>
@@ -845,5 +887,13 @@ function SectionTitle({ children }: { children: ReactNode }) {
 function SectionGlow() {
   return (
     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(67,217,255,0.16),transparent_28%),radial-gradient(circle_at_84%_54%,rgba(246,200,95,0.12),transparent_26%)]" />
+  );
+}
+
+function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.39 4.3 5.5v6.24zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+    </svg>
   );
 }

@@ -10,6 +10,16 @@ import {
 
 const SITE_URL = "https://brandzoomedia.in";
 
+const LINKEDIN_PROFILE_URL = brand.linkedinUrl;
+
+const linkedSameAs = Array.from(
+  new Set([
+    ...brand.socialLinks.map((link) => link.href),
+    LINKEDIN_PROFILE_URL,
+    brand.website,
+  ]),
+);
+
 export function personSchema() {
   return {
     "@context": "https://schema.org",
@@ -75,7 +85,7 @@ export function personSchema() {
       addressRegion: "Delhi",
       addressCountry: "IN",
     },
-    sameAs: brand.socialLinks.map((link) => link.href),
+    sameAs: linkedSameAs,
   };
 }
 
@@ -145,7 +155,7 @@ export function organizationSchema() {
       addressRegion: "Delhi",
       addressCountry: "IN",
     },
-    sameAs: brand.socialLinks.map((link) => link.href),
+    sameAs: linkedSameAs,
   };
 }
 
@@ -196,6 +206,55 @@ export function servicesSchema() {
     areaServed: ["IN", "AE", "US", "UK", "Global"],
     url: `${SITE_URL}/services/${service.slug}`,
   }));
+}
+
+export function profilePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${SITE_URL}/#profile`,
+    name: `${brand.name} - ${brand.company} | Digital Marketing & Website Development`,
+    url: SITE_URL,
+    inLanguage: "en-IN",
+    dateCreated: "2018-01-01",
+    dateModified: new Date().toISOString().slice(0, 10),
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#amit-rai`,
+      name: brand.name,
+      url: SITE_URL,
+      image: `${SITE_URL}/opengraph-image`,
+      identifier: [
+        {
+          "@type": "PropertyValue",
+          propertyID: "LinkedIn",
+          value: LINKEDIN_PROFILE_URL,
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "Email",
+          value: brand.email,
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "Phone",
+          value: brand.phoneIntl,
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "Website",
+          value: brand.website,
+        },
+      ],
+      sameAs: linkedSameAs,
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      ],
+    },
+  };
 }
 
 export function aggregateRatingSchema() {

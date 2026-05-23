@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { SVGProps } from "react";
 import {
   ArrowUpRight,
   CalendarDays,
@@ -74,6 +75,14 @@ export default function ContactPage() {
               accent="white"
               external
             />
+            <ContactChannel
+              href={brand.linkedinUrl}
+              icon={<LinkedinIcon className="size-5" />}
+              label="LinkedIn"
+              value="Verified professional profile"
+              accent="linkedin"
+              external
+            />
           </div>
 
           <p className="mt-8 text-sm text-white/45">
@@ -100,7 +109,7 @@ function ContactChannel({
   icon: React.ReactNode;
   label: string;
   value: string;
-  accent: "cyan" | "lime" | "white";
+  accent: "cyan" | "lime" | "white" | "linkedin";
   external?: boolean;
 }) {
   const accentBg =
@@ -108,13 +117,22 @@ function ContactChannel({
       ? "border-cyan-300/25 bg-cyan-300/10 hover:bg-cyan-300/15 text-cyan-100"
       : accent === "lime"
         ? "border-lime-300/25 bg-lime-300/10 hover:bg-lime-300/15 text-lime-100"
-        : "border-white/10 bg-white/[0.045] hover:bg-white/10 text-white/70";
+        : accent === "linkedin"
+          ? "border-[#0A66C2]/40 bg-[#0A66C2]/15 hover:bg-[#0A66C2]/25 text-white"
+          : "border-white/10 bg-white/[0.045] hover:bg-white/10 text-white/70";
+
+  const isLinkedIn = accent === "linkedin";
+  const relValue = isLinkedIn
+    ? "me noopener noreferrer"
+    : external || href.startsWith("http")
+      ? "noopener noreferrer"
+      : undefined;
 
   return (
     <Link
       href={href}
       target={external || href.startsWith("http") ? "_blank" : undefined}
-      rel={external || href.startsWith("http") ? "noopener noreferrer" : undefined}
+      rel={relValue}
       className={`group flex items-center justify-between gap-4 rounded-md border px-4 py-4 backdrop-blur-xl transition ${accentBg}`}
     >
       <div className="flex items-center gap-3">
@@ -128,5 +146,13 @@ function ContactChannel({
       </div>
       <ArrowUpRight className="size-4 opacity-70 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
     </Link>
+  );
+}
+
+function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.39 4.3 5.5v6.24zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+    </svg>
   );
 }
