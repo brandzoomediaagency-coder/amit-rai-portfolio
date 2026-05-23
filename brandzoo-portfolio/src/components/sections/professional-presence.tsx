@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { SVGProps } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   ArrowUpRight,
   BadgeCheck,
@@ -22,6 +22,8 @@ import { brand, linkedinPresence } from "@/lib/data/site";
 const LINKEDIN_BLUE = "#0A66C2";
 
 export function ProfessionalPresenceSection() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="professional-presence"
@@ -162,9 +164,9 @@ export function ProfessionalPresenceSection() {
                   {linkedinPresence.highlights.map((item, index) => (
                     <motion.div
                       key={item.label}
-                      initial={{ opacity: 0, x: 12 }}
+                      initial={shouldReduceMotion ? false : { opacity: 0, x: 12 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-80px" }}
+                      viewport={{ once: true, margin: "-40px", amount: 0.05 }}
                       transition={{ duration: 0.45, delay: 0.05 * index }}
                       className="group/hl flex items-start gap-3 rounded-md border border-white/10 bg-white/[0.04] p-4 transition hover:border-[#0A66C2]/40 hover:bg-white/[0.07]"
                     >
