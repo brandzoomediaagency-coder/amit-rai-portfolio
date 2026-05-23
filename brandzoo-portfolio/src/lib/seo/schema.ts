@@ -175,6 +175,79 @@ export function websiteSchema() {
   };
 }
 
+export function profilePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${SITE_URL}/#profile`,
+    url: SITE_URL,
+    name: `${brand.name} - ${brand.company}`,
+    description:
+      "Personal portfolio of Amit Rai — Digital Marketing Specialist, Performance Marketer, Website Developer, and Founder & CEO of Brandzoo Media.",
+    inLanguage: "en-IN",
+    dateCreated: "2018",
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/opengraph-image`,
+      width: 1200,
+      height: 630,
+    },
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#amit-rai`,
+      name: brand.name,
+      alternateName: ["Amit Rai", "Amit Rai Brandzoo Media"],
+      jobTitle:
+        "Digital Marketing Specialist, Website Developer, Performance Marketer, Founder & CEO",
+      worksFor: {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#brandzoo-media`,
+        name: brand.company,
+        url: SITE_URL,
+      },
+      image: `${SITE_URL}/opengraph-image`,
+      email: brand.email,
+      telephone: brand.phoneIntl,
+      url: SITE_URL,
+      identifier: [
+        {
+          "@type": "PropertyValue",
+          propertyID: "LinkedIn",
+          value: LINKEDIN_PROFILE_URL,
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "Email",
+          value: brand.email,
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "Phone",
+          value: brand.phoneIntl,
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "Website",
+          value: brand.website,
+        },
+      ],
+      sameAs: linkedSameAs,
+    },
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
+    },
+    about: [
+      "Digital Marketing",
+      "Performance Marketing",
+      "Meta Ads",
+      "Google Ads",
+      "SEO",
+      "Lead Generation",
+      "Website Development",
+    ],
+  };
+}
+
 export function faqSchema() {
   return {
     "@context": "https://schema.org",
@@ -206,55 +279,6 @@ export function servicesSchema() {
     areaServed: ["IN", "AE", "US", "UK", "Global"],
     url: `${SITE_URL}/services/${service.slug}`,
   }));
-}
-
-export function profilePageSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "@id": `${SITE_URL}/#profile`,
-    name: `${brand.name} - ${brand.company} | Digital Marketing & Website Development`,
-    url: SITE_URL,
-    inLanguage: "en-IN",
-    dateCreated: "2018-01-01",
-    dateModified: new Date().toISOString().slice(0, 10),
-    mainEntity: {
-      "@type": "Person",
-      "@id": `${SITE_URL}/#amit-rai`,
-      name: brand.name,
-      url: SITE_URL,
-      image: `${SITE_URL}/opengraph-image`,
-      identifier: [
-        {
-          "@type": "PropertyValue",
-          propertyID: "LinkedIn",
-          value: LINKEDIN_PROFILE_URL,
-        },
-        {
-          "@type": "PropertyValue",
-          propertyID: "Email",
-          value: brand.email,
-        },
-        {
-          "@type": "PropertyValue",
-          propertyID: "Phone",
-          value: brand.phoneIntl,
-        },
-        {
-          "@type": "PropertyValue",
-          propertyID: "Website",
-          value: brand.website,
-        },
-      ],
-      sameAs: linkedSameAs,
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      ],
-    },
-  };
 }
 
 export function aggregateRatingSchema() {

@@ -17,7 +17,10 @@ export const metadata: Metadata = {
   description:
     "Amit Rai is a Digital Marketing Specialist, Website Developer, Performance Marketer, and CEO of Brandzoo Media. Meta Ads, Google Ads, SEO & AI optimization, lead generation, social media marketing, and modern conversion-focused website development for brands ready to scale.",
   applicationName: "Brandzoo Media",
-  authors: [{ name: "Amit Rai", url: "https://brandzoomedia.in" }],
+  authors: [
+    { name: "Amit Rai", url: "https://www.linkedin.com/in/amit-rai-1a6271377/" },
+    { name: "Brandzoo Media", url: "https://brandzoomedia.in" },
+  ],
   creator: "Amit Rai",
   publisher: "Brandzoo Media",
   keywords: [
