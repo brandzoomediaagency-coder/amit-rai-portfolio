@@ -1,0 +1,272 @@
+import {
+  brand,
+  certifications,
+  faqs,
+  services,
+  websiteProjects,
+  type WebsiteProject,
+} from "@/lib/data/site";
+
+const SITE_URL = "https://brandzoomedia.in";
+
+export function personSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_URL}/#amit-rai`,
+    name: brand.name,
+    alternateName: "Amit Rai - Brandzoo Media",
+    jobTitle:
+      "Digital Marketing Specialist, Website Developer, and Performance Marketer",
+    description:
+      "Digital Marketing Specialist, Website Developer, Performance Marketer, and CEO of Brandzoo Media. 5+ years across Meta Ads, Google Ads, SEO & AI optimization, lead generation, social media marketing, UGC, app marketing, and modern conversion-focused website development.",
+    image: `${SITE_URL}/opengraph-image`,
+    url: SITE_URL,
+    email: brand.email,
+    telephone: brand.phoneIntl,
+    knowsAbout: [
+      "Performance Marketing",
+      "Meta Ads",
+      "Facebook Ads",
+      "Instagram Ads",
+      "Google Ads",
+      "PPC Campaigns",
+      "Search Engine Optimization",
+      "AI Search Optimization",
+      "Lead Generation",
+      "Social Media Marketing",
+      "Google Business Profile Optimization",
+      "UGC Video Production",
+      "Influencer Marketing",
+      "Website Development",
+      "Next.js Development",
+      "Shopify Development",
+      "E-commerce Website Development",
+      "Landing Page Development",
+      "App Marketing",
+      "Conversion Rate Optimization",
+      "Funnel Optimization",
+      "Branding & Growth Strategy",
+      "Marketing Analytics",
+    ],
+    knowsLanguage: ["en", "hi"],
+    hasCredential: certifications
+      .filter((cert) => cert.verified && cert.verifyUrl)
+      .map((cert) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: cert.title,
+        credentialCategory: "certificate",
+        recognizedBy: {
+          "@type": "Organization",
+          name: cert.issuer,
+        },
+        url: cert.verifyUrl,
+        identifier: cert.credential.replace(/^ID:\s*/i, ""),
+      })),
+    worksFor: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#brandzoo-media`,
+      name: brand.company,
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "New Delhi",
+      addressRegion: "Delhi",
+      addressCountry: "IN",
+    },
+    sameAs: brand.socialLinks.map((link) => link.href),
+  };
+}
+
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${SITE_URL}/#brandzoo-media`,
+    name: brand.company,
+    legalName: "Brandzoo Media",
+    alternateName: "Brandzoo",
+    description: brand.companySummary,
+    slogan:
+      "Performance marketing and high-converting websites for brands ready to scale.",
+    founder: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#amit-rai`,
+      name: brand.name,
+    },
+    url: SITE_URL,
+    logo: `${SITE_URL}/opengraph-image`,
+    image: `${SITE_URL}/opengraph-image`,
+    foundingDate: "2018",
+    email: brand.email,
+    telephone: brand.phoneIntl,
+    priceRange: "$$",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: brand.email,
+        telephone: brand.phoneIntl,
+        areaServed: "Worldwide",
+        availableLanguage: ["en", "hi"],
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: brand.email,
+        telephone: brand.phoneIntl,
+        areaServed: "IN",
+        availableLanguage: ["en", "hi"],
+      },
+    ],
+    areaServed: ["IN", "AE", "US", "UK", "Global"],
+    serviceType: services.map((service) => service.title),
+    knowsAbout: [
+      "Performance Marketing",
+      "Meta Ads",
+      "Google Ads",
+      "PPC Campaigns",
+      "SEO & AI Optimization",
+      "Lead Generation",
+      "Funnel Optimization",
+      "Influencer Marketing",
+      "Social Media Marketing",
+      "Google Business Profile",
+      "UGC Video Production",
+      "Website Development",
+      "E-commerce Website Development",
+      "App Marketing",
+      "Branding & Growth Strategy",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "New Delhi",
+      addressRegion: "Delhi",
+      addressCountry: "IN",
+    },
+    sameAs: brand.socialLinks.map((link) => link.href),
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: "Amit Rai - Brandzoo Media",
+    description:
+      "Premium portfolio of Amit Rai, Digital Marketing Specialist, Website Developer, and CEO of Brandzoo Media. Performance marketing, paid ads, SEO, lead generation, analytics, and website development.",
+    inLanguage: "en-IN",
+    publisher: {
+      "@id": `${SITE_URL}/#brandzoo-media`,
+    },
+  };
+}
+
+export function faqSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function servicesSchema() {
+  return services.map((service) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_URL}/services/${service.slug}`,
+    name: service.title,
+    serviceType: service.title,
+    description: service.whyItMatters,
+    provider: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#brandzoo-media`,
+      name: brand.company,
+    },
+    areaServed: ["IN", "AE", "US", "UK", "Global"],
+    url: `${SITE_URL}/services/${service.slug}`,
+  }));
+}
+
+export function websitePortfolioSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Live Website Portfolio by Amit Rai",
+    description:
+      "Websites developed by Amit Rai, Founder of Brandzoo Media — business websites, landing pages, e-commerce stores, and portfolio websites.",
+    itemListElement: websiteProjects.map((project: WebsiteProject, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: project.title,
+        url: project.url,
+        description: project.description,
+        creator: {
+          "@type": "Person",
+          "@id": `${SITE_URL}/#amit-rai`,
+          name: brand.name,
+        },
+        about: project.category,
+        keywords: project.technologies.join(", "),
+      },
+    })),
+  };
+}
+
+type BreadcrumbItem = { name: string; url: string };
+
+export function breadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+    })),
+  };
+}
+
+export function articleSchema(post: {
+  title: string;
+  slug: string;
+  excerpt: string;
+  category: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    articleSection: post.category,
+    url: `${SITE_URL}/blog/${post.slug}`,
+    image: `${SITE_URL}/opengraph-image`,
+    inLanguage: "en-IN",
+    author: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#amit-rai`,
+      name: brand.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#brandzoo-media`,
+      name: brand.company,
+    },
+  };
+}
+
+export function serializeJsonLd(value: unknown) {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
