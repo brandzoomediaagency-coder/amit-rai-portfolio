@@ -147,7 +147,7 @@ export function ProfessionalPresenceSection() {
                     className="inline-flex items-center justify-center gap-2 rounded-md border border-white/15 bg-white/5 px-4 py-3 text-sm text-white/80 transition hover:bg-white/10 hover:text-white"
                   >
                     <LinkedinIcon className="size-4 text-[#7DBAFF]" />
-                    Founder Profile · Amit Rai
+                    CEO Profile · Amit Rai
                     <ArrowUpRight className="size-4" />
                   </Link>
                 </div>

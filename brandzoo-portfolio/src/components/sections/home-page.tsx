@@ -204,7 +204,7 @@ function HeroSection() {
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-[#0A66C2] px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0959AB]"
                 >
                   <LinkedinIcon className="size-4" />
-                  Founder Profile
+                  CEO Profile
                   <ExternalLink className="size-3.5" />
                 </Link>
                 <Link
@@ -270,7 +270,7 @@ function BrandSnapshotSection() {
               <div className="relative size-20 shrink-0 overflow-hidden rounded-md border border-white/15 bg-white/10 shadow-[0_0_30px_rgba(67,217,255,0.14)] sm:size-24">
                 <Image
                   src="/amit-rai.jpg"
-                  alt="Amit Rai - Founder & CEO of Brandzoo Media on LinkedIn"
+                  alt="Amit Rai - CEO of Brandzoo Media on LinkedIn"
                   fill
                   sizes="96px"
                   className="object-cover"
@@ -810,7 +810,7 @@ function ContactSection() {
               />
               <ContactLink
                 icon={<LinkedinIcon className="size-5" />}
-                label="LinkedIn · Founder"
+                label="LinkedIn · CEO"
                 value="Amit Rai · Verified profile"
                 href={brand.linkedinUrl}
               />

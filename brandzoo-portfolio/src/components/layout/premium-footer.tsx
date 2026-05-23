@@ -49,11 +49,11 @@ export function PremiumFooter() {
               href={brand.linkedinUrl}
               target="_blank"
               rel="me noopener noreferrer"
-              aria-label="Amit Rai - Verified LinkedIn Profile (Founder)"
+              aria-label="Amit Rai - Verified LinkedIn Profile (CEO)"
               className="inline-flex items-center gap-2 rounded-md bg-[#0A66C2] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#0959AB]"
             >
               <LinkedinIcon className="size-3.5" />
-              Founder · Amit Rai
+              CEO · Amit Rai
             </Link>
             <Link
               href={brand.companyLinkedinUrl}

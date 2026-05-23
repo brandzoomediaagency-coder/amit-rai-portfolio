@@ -206,7 +206,7 @@ export function profilePageSchema() {
     url: SITE_URL,
     name: `${brand.name} - ${brand.company}`,
     description:
-      "Personal portfolio of Amit Rai — Digital Marketing Specialist, Performance Marketer, Website Developer, and Founder & CEO of Brandzoo Media.",
+      "Personal portfolio of Amit Rai — Digital Marketing Specialist, Performance Marketer, Website Developer, and CEO of Brandzoo Media.",
     inLanguage: "en-IN",
     dateCreated: "2018",
     primaryImageOfPage: {
@@ -221,7 +221,7 @@ export function profilePageSchema() {
       name: brand.name,
       alternateName: ["Amit Rai", "Amit Rai Brandzoo Media"],
       jobTitle:
-        "Digital Marketing Specialist, Website Developer, Performance Marketer, Founder & CEO",
+        "Digital Marketing Specialist, Website Developer, Performance Marketer, CEO",
       worksFor: {
         "@type": "Organization",
         "@id": `${SITE_URL}/#brandzoo-media`,
@@ -353,7 +353,7 @@ export function websitePortfolioSchema() {
     "@type": "ItemList",
     name: "Live Website Portfolio by Amit Rai",
     description:
-      "Websites developed by Amit Rai, Founder of Brandzoo Media — business websites, landing pages, e-commerce stores, and portfolio websites.",
+      "Websites developed by Amit Rai, CEO of Brandzoo Media — business websites, landing pages, e-commerce stores, and portfolio websites.",
     itemListElement: websiteProjects.map((project: WebsiteProject, index) => ({
       "@type": "ListItem",
       position: index + 1,

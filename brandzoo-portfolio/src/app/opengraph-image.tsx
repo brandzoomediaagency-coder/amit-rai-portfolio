@@ -47,7 +47,7 @@ export default function Image() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 28, fontWeight: 700 }}>Amit Rai</span>
             <span style={{ fontSize: 18, color: "rgba(255,255,255,0.62)" }}>
-              Founder & CEO · Brandzoo Media
+              CEO · Brandzoo Media
             </span>
           </div>
           <div

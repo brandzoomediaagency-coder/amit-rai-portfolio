@@ -78,7 +78,7 @@ export default function ContactPage() {
             <ContactChannel
               href={brand.linkedinUrl}
               icon={<LinkedinIcon className="size-5" />}
-              label="LinkedIn · Founder"
+              label="LinkedIn · CEO"
               value="Amit Rai · Verified profile"
               accent="linkedin"
               external

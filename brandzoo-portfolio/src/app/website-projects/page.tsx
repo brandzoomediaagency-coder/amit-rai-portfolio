@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title:
     "Website Projects & Live Portfolio - Websites Developed by Amit Rai | Brandzoo Media",
   description:
-    "Live website portfolio by Amit Rai, Founder of Brandzoo Media. Modern business websites, landing pages, portfolio websites, e-commerce stores, and lead-generation sites — built on Next.js, Shopify, and WordPress for speed, SEO, and conversion.",
+    "Live website portfolio by Amit Rai, CEO of Brandzoo Media. Modern business websites, landing pages, portfolio websites, e-commerce stores, and lead-generation sites — built on Next.js, Shopify, and WordPress for speed, SEO, and conversion.",
   keywords: [
     "Amit Rai Website Portfolio",
     "Website Developer Portfolio",

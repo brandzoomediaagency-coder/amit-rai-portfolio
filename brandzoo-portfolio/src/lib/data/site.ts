@@ -125,7 +125,7 @@ export const proofHighlights = [
 export const companyFacts = [
   { label: "Founded", value: "2018", detail: "Performance marketing & growth services" },
   { label: "Headquarters", value: "New Delhi", detail: "Serving brands across India & globally" },
-  { label: "Team", value: "11-50", detail: "Founder-led specialist team" },
+  { label: "Team", value: "11-50", detail: "CEO-led specialist team" },
   {
     label: "Specialties",
     value: "Paid · SEO · Web",
