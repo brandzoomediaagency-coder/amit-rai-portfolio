@@ -11,13 +11,14 @@ import {
 const SITE_URL = "https://brandzoomedia.in";
 
 const LINKEDIN_PROFILE_URL = brand.linkedinUrl;
+const LINKEDIN_COMPANY_URL = brand.companyLinkedinUrl;
 
-const linkedSameAs = Array.from(
-  new Set([
-    ...brand.socialLinks.map((link) => link.href),
-    LINKEDIN_PROFILE_URL,
-    brand.website,
-  ]),
+const personSameAs = Array.from(
+  new Set([LINKEDIN_PROFILE_URL, brand.website, LINKEDIN_COMPANY_URL]),
+);
+
+const organizationSameAs = Array.from(
+  new Set([LINKEDIN_COMPANY_URL, brand.website, LINKEDIN_PROFILE_URL]),
 );
 
 export function personSchema() {
@@ -85,7 +86,7 @@ export function personSchema() {
       addressRegion: "Delhi",
       addressCountry: "IN",
     },
-    sameAs: linkedSameAs,
+    sameAs: personSameAs,
   };
 }
 
@@ -155,7 +156,29 @@ export function organizationSchema() {
       addressRegion: "Delhi",
       addressCountry: "IN",
     },
-    sameAs: linkedSameAs,
+    sameAs: organizationSameAs,
+    identifier: [
+      {
+        "@type": "PropertyValue",
+        propertyID: "LinkedInCompany",
+        value: LINKEDIN_COMPANY_URL,
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "Website",
+        value: brand.website,
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "Phone",
+        value: brand.phoneIntl,
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "Email",
+        value: brand.email,
+      },
+    ],
   };
 }
 
@@ -212,8 +235,13 @@ export function profilePageSchema() {
       identifier: [
         {
           "@type": "PropertyValue",
-          propertyID: "LinkedIn",
+          propertyID: "LinkedInPersonal",
           value: LINKEDIN_PROFILE_URL,
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "LinkedInCompany",
+          value: LINKEDIN_COMPANY_URL,
         },
         {
           "@type": "PropertyValue",
@@ -231,7 +259,7 @@ export function profilePageSchema() {
           value: brand.website,
         },
       ],
-      sameAs: linkedSameAs,
+      sameAs: personSameAs,
     },
     isPartOf: {
       "@id": `${SITE_URL}/#website`,

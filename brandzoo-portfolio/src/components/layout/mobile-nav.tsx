@@ -17,6 +17,7 @@ const navItems = [
   { label: "Website Projects", href: "/website-projects" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Certifications", href: "/certifications" },
+  { label: "LinkedIn Presence", href: "/#professional-presence" },
   { label: "Insights", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];

@@ -17,6 +17,7 @@ const footerLinks = [
   { label: "Website Projects", href: "/website-projects" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Certifications", href: "/certifications" },
+  { label: "LinkedIn Presence", href: "/#professional-presence" },
   { label: "Insights", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -48,11 +49,21 @@ export function PremiumFooter() {
               href={brand.linkedinUrl}
               target="_blank"
               rel="me noopener noreferrer"
-              aria-label="Amit Rai - Verified LinkedIn Profile"
+              aria-label="Amit Rai - Verified LinkedIn Profile (Founder)"
               className="inline-flex items-center gap-2 rounded-md bg-[#0A66C2] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#0959AB]"
             >
               <LinkedinIcon className="size-3.5" />
-              LinkedIn Profile
+              Founder · Amit Rai
+            </Link>
+            <Link
+              href={brand.companyLinkedinUrl}
+              target="_blank"
+              rel="me noopener noreferrer"
+              aria-label="Brandzoo Media on LinkedIn (Company)"
+              className="inline-flex items-center gap-2 rounded-md border border-[#0A66C2]/45 bg-[#0A66C2]/15 px-3 py-2 text-xs font-medium text-[#D6EAFF] transition hover:bg-[#0A66C2]/25"
+            >
+              <LinkedinIcon className="size-3.5 text-[#7DBAFF]" />
+              Company · Brandzoo Media
             </Link>
             <Link
               href={brand.website}

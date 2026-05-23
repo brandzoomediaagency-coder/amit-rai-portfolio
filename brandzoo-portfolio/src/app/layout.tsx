@@ -61,13 +61,15 @@ export const metadata: Metadata = {
     "Funnel Optimization",
     "Branding & Growth Strategy",
     "CEO Brandzoo Media",
+    "Brandzoo Media LinkedIn",
+    "Amit Rai LinkedIn",
   ],
   category: "Digital Marketing",
   openGraph: {
     title:
       "Amit Rai - Digital Marketing Specialist, Website Developer & Performance Marketer",
     description:
-      "CEO-led digital marketing, Meta Ads, Google Ads, SEO & AI optimization, lead generation, and conversion-focused website development by Amit Rai, CEO of Brandzoo Media.",
+      "CEO-led digital marketing, Meta Ads, Google Ads, SEO & AI optimization, lead generation, and conversion-focused website development by Amit Rai, CEO of Brandzoo Media. Connect on LinkedIn (Brandzoo Media company page) for daily insights.",
     url: "https://brandzoomedia.in",
     siteName: "Brandzoo Media",
     images: [
@@ -80,6 +82,9 @@ export const metadata: Metadata = {
     ],
     locale: "en_IN",
     type: "website",
+  },
+  other: {
+    "linkedin:owner": "brandzoomedia",
   },
   twitter: {
     card: "summary_large_image",

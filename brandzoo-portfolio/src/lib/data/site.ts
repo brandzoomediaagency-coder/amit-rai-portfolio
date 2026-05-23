@@ -47,6 +47,8 @@ export const brand = {
   whatsappUrl: "https://wa.me/919910550679",
   calendlyUrl: "https://calendly.com/brandzoomedia/strategy-call",
   linkedinUrl: "https://www.linkedin.com/in/amit-rai-1a6271377/",
+  companyLinkedinUrl: "https://www.linkedin.com/company/brandzoomedia/",
+  companyLinkedinHandle: "brandzoomedia",
   website: "https://brandzoomedia.in",
   websiteDisplay: "brandzoomedia.in",
   location: "Delhi / New Delhi, India · Serving brands globally",
@@ -57,8 +59,45 @@ export const brand = {
   heroCopy:
     "I'm Amit Rai — Digital Marketing Specialist, Website Developer, and CEO of Brandzoo Media. I build full-funnel growth systems across Meta Ads, Google Ads, SEO, lead generation, and modern websites so brands lower CAC, lift ROAS, and grow with data — not guesswork.",
   socialLinks: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/amit-rai-1a6271377/" },
+    { label: "LinkedIn (Personal)", href: "https://www.linkedin.com/in/amit-rai-1a6271377/" },
+    { label: "LinkedIn (Company)", href: "https://www.linkedin.com/company/brandzoomedia/" },
     { label: "Website", href: "https://brandzoomedia.in" },
+  ],
+};
+
+export const linkedinPresence = {
+  companyHeadline: "Brandzoo Media — Performance Marketing & Website Studio on LinkedIn",
+  companyTagline:
+    "Follow Brandzoo Media for daily insights on performance marketing, paid ads, SEO, website development, and growth case studies.",
+  companyFacts: [
+    { label: "Founded", value: "2018" },
+    { label: "Industry", value: "Marketing & Advertising" },
+    { label: "Team", value: "11-50" },
+    { label: "HQ", value: "New Delhi · India" },
+  ],
+  trustSignals: [
+    "CEO-led communication — every post comes from Amit Rai directly",
+    "Active client case studies, ROAS wins, and growth playbooks",
+    "Verified business page with consistent posting cadence",
+    "Recommendations and connections across founders, marketers, and creators",
+  ],
+  highlights: [
+    {
+      label: "Performance Marketing wins",
+      detail: "Live ROAS, CPL, and creative testing breakdowns",
+    },
+    {
+      label: "Website launches",
+      detail: "Behind-the-scenes builds delivered in 24-48 hours",
+    },
+    {
+      label: "SEO & AI search",
+      detail: "Schema, content systems, and AI-visibility frameworks",
+    },
+    {
+      label: "Growth playbooks",
+      detail: "Funnels, lead generation, and lifecycle automations",
+    },
   ],
 };
 
